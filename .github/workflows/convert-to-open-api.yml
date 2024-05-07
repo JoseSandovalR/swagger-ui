@@ -37,8 +37,7 @@ jobs:
       run: |
         git config --global user.email "automation@automaion.com"
         git config --global user.name "robot"
-        git config --global http.extraheader "AUTHORIZATION: bearer ${{ secrets.GH_TOKEN }}"
-        # git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/JoseSandovalR/poc-swagger.git
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/JoseSandovalR/swagger-ui.git
     
     - name: Commit and push if it's necessar
       run: |
