@@ -1,12 +1,20 @@
 name: Update Swagger UI
+
 on:
-  schedule:
-    - cron:  '0 10 * * *'
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Convert to OpenAPI"]
+    types:
+      - completed
+      
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   updateSwagger:
     runs-on: ubuntu-latest
+    # Verificar que el workflow que concluyó es el esperado y fue exitoso
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'Convert to OpenAPI' }}
     steps:
       - uses: actions/checkout@v4
       - name: Get Latest Swagger UI Release

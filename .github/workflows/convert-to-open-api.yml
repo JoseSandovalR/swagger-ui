@@ -1,0 +1,47 @@
+name: Convert to OpenAPI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install postman-to-openapi
+      run: npm install -g postman-to-openapi
+
+    - name: Remove existing OpenAPI file if it exists
+      run: |
+        if [ -f swagger.yaml ]; then
+          rm swagger.yaml
+          echo "Existe el archivo swagger.yaml, por lo tanto este sera eliminado."
+        fi
+
+    - name: Convert Postman collection to OpenAPI
+      run: p2o ms_mock.postman_collection.json -f swagger.yaml
+
+    - name: Set up Git credentials using URL
+      run: |
+        git config --global user.email "automation@automaion.com"
+        git config --global user.name "robot"
+        git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/JoseSandovalR/poc-swagger.git
+    
+    - name: Commit and push if it's necessar
+      run: |
+        git pull
+        git add swagger.yaml
+        git commit -m "[MOD] Se modifica archivo swagger.yaml" || exit 0 
+        git push origin master

@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "68ed49b3-9b33-4428-86e8-39b399fa4899",
+		"name": "ms_mock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13580747"
+	},
+	"item": [
+		{
+			"name": "ejemplo1",
+			"item": [
+				{
+					"name": "ejemplo1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+								"uuid": "ff5e2144-d8f4-43f6-b872-b8d2580ae6c6"
+							}
+						],
+						"url": {
+							"raw": "https://api.restful-api.dev/objects",
+							"protocol": "https",
+							"host": [
+								"api",
+								"restful-api",
+								"dev"
+							],
+							"path": [
+								"objects"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ejemplo3",
+			"item": [
+				{
+					"name": "meteo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m",
+							"protocol": "https",
+							"host": [
+								"api",
+								"open-meteo",
+								"com"
+							],
+							"path": [
+								"v1",
+								"forecast"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "52.52"
+								},
+								{
+									"key": "longitude",
+									"value": "13.41"
+								},
+								{
+									"key": "current",
+									"value": "temperature_2m,wind_speed_10m"
+								},
+								{
+									"key": "hourly",
+									"value": "temperature_2m,relative_humidity_2m,wind_speed_10m"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ejemplo2",
+			"item": [
+				{
+					"name": "autos",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
