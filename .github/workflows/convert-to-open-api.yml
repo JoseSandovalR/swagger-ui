@@ -41,7 +41,7 @@ jobs:
     
     - name: Commit and push if it's necessar
       run: |
-        git pull
+       # git pull
         git add swagger.yaml
         git commit -m "[MOD] Se modifica archivo swagger.yaml" || exit 0 
         git push origin master
